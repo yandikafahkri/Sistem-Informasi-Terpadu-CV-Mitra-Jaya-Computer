@@ -105,7 +105,10 @@
 
               </div>
               <!-- ____________________________ -->
-
+              <div class="card-footer">
+                <a href="{{ url('inventaris') }}/{{('printlist')}}" target="_blank" class="btn btn-danger">
+                <i class="fas fa-print"></i> Print List</a>
+              </div>
             </div>
             <!-- /.card -->
           </div>

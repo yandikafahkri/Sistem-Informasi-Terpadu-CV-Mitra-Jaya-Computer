@@ -16,8 +16,6 @@ class InventarisController extends Controller
     	$data_inventaris = \App\Inventaris::all();
         $data_clean = \App\Clean::all();
 
-
-
     	return view('inventaris.index',['data_inventaris' => $data_inventaris, 
                                         'data_clean' => $data_clean,
                                         ]);
@@ -104,6 +102,13 @@ class InventarisController extends Controller
         $rawat2 = \App\Incident::all();
 
         return view('inventaris.printclean', ['inventaris' => $inventaris, 'rawat1' => $rawat1, 'rawat2' => $rawat2]);
+    }
+
+    public function printlist()
+    {
+    	$data_inventaris = \App\Inventaris::all();
+
+    	return view('inventaris.printlist',['data_inventaris' => $data_inventaris]);
     }
 
     public function printincident($id)

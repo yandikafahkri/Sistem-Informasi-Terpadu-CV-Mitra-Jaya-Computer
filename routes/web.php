@@ -60,6 +60,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:administrator']],function(){
 	Route::post('/inventaris/{id}/update', 'InventarisController@update');
 	Route::get('/inventaris/{id}/delete', 'InventarisController@delete');
 	Route::get('/inventaris/{id}/printclean', 'InventarisController@printclean');
+	Route::get('/inventaris/printlist', 'InventarisController@printlist');
 	Route::get('/inventaris/{id}/printincident', 'InventarisController@printincident');
 
 	Route::get('/karyawan', 'KaryawanController@index');
