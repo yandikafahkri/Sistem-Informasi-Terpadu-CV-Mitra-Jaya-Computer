@@ -25,16 +25,15 @@
         <div class="card card-primary card-outline">
           <div class="card-body box-profile">
             <div class="text-center">
-              <img class="profile-user-img img-fluid img-circle"
+              <img class="mx-auto rounded-circle border-info" style="width: 200px;"
               src="{{asset('adminlte/dist/img/mjc.png')}}"
               alt="User profile picture">
             </div>
 
-            <h3 class="profile-username text-center">Mitra Jaya Computer Semarang</h3>
+            <h3 class="profile-username text-center">CV Mitra Jaya Computer</h3>
 
-            <p class="text-muted text-center">Commanditaire Vennotschaap </p>
 
-            <ul class="list-group list-group-unbordered mb-3">
+            <ul class="list-group list-group-unbordered mb-3 text-center">
               <li class="list-group-item">
                 <b>Instalasi Jaringan</b> 
               </li>
@@ -54,7 +53,7 @@
       <!-- /.col -->
       <!-- ______________________________________________________________________________________________________ -->
       <div class="col-md-9">
-        <div class="card" style="height: 410px">
+        <div class="card" style="height: 440px">
           <div class="card-header">
             Profile Singkat Perusahaan
           </div><!-- /.card-header -->

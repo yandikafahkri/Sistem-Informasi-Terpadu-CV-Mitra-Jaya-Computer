@@ -130,7 +130,7 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="{{ url('/maintenance') }}" class="nav-link">
+                    <a href="{{ url('inventaris') }}/{{('maint')}}" class="nav-link">
                       <i class="nav-icon fas fa-check float-right"></i>
                       <p>- Maintenance CCTV</p>
                     </a>

@@ -44,6 +44,7 @@
                             <th scope="col">No</th>
                             <th scope="col">Nama CCTV</th>
                             <th scope="col">IP Address</th>
+                            <th scope="col">Tanggal Maintenance</th>
                             <th scope="col">Action</th>
                       </tr>
                   </thead>
@@ -54,10 +55,12 @@
                       ?>
                       <!-- ambil data di database-->
                       @foreach($data_inventaris as $inventaris)
-                          <tr>
+
+                      <tr>
                               <th>{{ $nomer++}}</th>
                               <td>{{ $inventaris->nama}} </td>
                               <td>{{ $inventaris->ip}} </td>
+                              <td>{{ $inventaris->clean_inventaris->waktu}} </td>
 
                               <td>
                                   <a href="{{url('inventaris')}}/{{$inventaris->id}}/{{('clean')}}" class="btn btn-success btn-sm" style="color: white"">
@@ -67,7 +70,7 @@
                               </td>
                               </tr>
                       @endforeach          
-                  </tbody>
+                    </tbody>
 
                 </table>
 

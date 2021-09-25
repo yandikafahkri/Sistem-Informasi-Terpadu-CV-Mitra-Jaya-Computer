@@ -104,7 +104,6 @@
 							<thead>
 								<tr>
 									<th>No</th>
-								<!-- 	<th>Barang</th>		-->
 									<th>Foto Before</th>
 									<th>Foto After</th>
 									<th>Foto Aksi</th>
@@ -152,7 +151,7 @@
 			@endforeach
 
 
-			<a href="{{ url('/maintenance') }}" class="btn btn-info btn-md">
+			<a href="{{url('inventaris')}}/{{'maint'}}" class="btn btn-info btn-md">
 				<i class="fas fa-undo"> </i> Kembali
 			</a>
 			<a href="{{ url('inventaris') }}/{{$inventaris->id}}/{{('printclean')}}" target="_blank" class="btn btn-success float-right"><i class="fas fa-print"></i> Print</a>

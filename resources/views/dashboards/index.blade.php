@@ -107,7 +107,7 @@
 									?>
 									<h3><span class="badge bg-warning"><?=$pres100?> % </span></h3>
 
-									<a type="" href="{{ url('/maintenance') }}" class="nav-link">
+									<a type="" href="{{ url('inventaris') }}/{{('maint')}}" class="nav-link">
 										<i class="fas fa-arrow-circle-right"> </i> Lihat Data
 									</a>
 								</td>

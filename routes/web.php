@@ -29,7 +29,12 @@ Route::group(['middleware' => ['auth', 'ceklevel:administrator,teknisi']],functi
 
 	Route::get('/', 'DashboardController@index');
 
+	//Index List Inventaris
 	Route::get('/inventaris', 'InventarisController@index');
+
+	//Index List Maintenance
+	Route::get('/inventaris/maint', 'InventarisController@maint');
+
 
 	Route::get('/inventaris/{id}/clean', 'InventarisController@clean');
 	Route::get('/inventaris/{id}/{idclean}/deleteclean', 'InventarisController@deleteclean');

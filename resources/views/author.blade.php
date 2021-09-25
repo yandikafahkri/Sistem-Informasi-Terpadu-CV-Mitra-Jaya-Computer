@@ -94,6 +94,17 @@
 
         
       </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card card-success card-outline">
+            <div class="card-body text-center">
+            <a class="btn border-success btn-social text-success" href="https://wa.me/6281809305692" target="_blank">
+              Contact Administrator :
+              <i class="fab fa-whatsapp"> 0818-0930-5692</i></a>
+            </div>
+          </div>
+        </div>  
+      </div>
       <!-- /.col -->
     </div>
     <!-- /.row -->

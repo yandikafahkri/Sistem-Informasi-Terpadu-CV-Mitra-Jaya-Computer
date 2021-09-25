@@ -14,10 +14,8 @@ class InventarisController extends Controller
     public function index()
     {
     	$data_inventaris = \App\Inventaris::all();
-        $data_clean = \App\Clean::all();
 
-    	return view('inventaris.index',['data_inventaris' => $data_inventaris, 
-                                        'data_clean' => $data_clean,
+    	return view('inventaris.index',['data_inventaris' => $data_inventaris
                                         ]);
     }
 
@@ -61,7 +59,9 @@ class InventarisController extends Controller
 //pembersihan
         $pembersihan = \App\Clean::all();     
 
-        return view('inventaris.clean',['clean' => $clean, 'inventaris' => $inventaris, 'pembersihan' => $pembersihan]);
+        return view('inventaris.clean',['clean' => $clean, 
+                                        'inventaris' => $inventaris,
+                                        'pembersihan' => $pembersihan]);
     }
 
     public function incident($id)
@@ -73,6 +73,22 @@ class InventarisController extends Controller
         $perbaikan = \App\Incident::all();        
 
         return view('inventaris.incident',['incident' => $incident, 'inventaris' => $inventaris, 'perbaikan' => $perbaikan]);
+    }
+
+    public function maint()
+    {
+        // $clean = \App\Inventaris::all();
+        // $inventaris = Inventaris::all();
+    	$data_inventaris = \App\Inventaris::all();
+
+
+        return view('inventaris.maint', compact('data_inventaris'), [
+                                        'data_inventaris' => $data_inventaris
+        ]);
+
+        // return view('inventaris.maint',[ 
+        //                                 'inventaris' => $inventaris
+        //                                 ]);
     }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////

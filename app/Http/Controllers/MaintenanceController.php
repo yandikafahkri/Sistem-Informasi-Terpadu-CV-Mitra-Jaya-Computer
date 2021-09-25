@@ -15,12 +15,14 @@ class MaintenanceController extends Controller
     public function index()
     {
     	$data_inventaris = \App\Inventaris::all();
-        $data_clean = \App\Clean::all();
-        $data_incident = \App\Incident::all();
-    	return view('maintenance.index',['data_inventaris' => $data_inventaris, 
-                                        'data_clean' => $data_clean, 
-                                        'data_incident' => $data_incident,
+        $inventaris = \App\Clean_inventaris::all();
+
+    	return view('maintenance.index',['data_inventaris' => $data_inventaris,                                         
+                                        'inventaris' => $inventaris
                                         ]);
     }
+
+
+
 
 }
