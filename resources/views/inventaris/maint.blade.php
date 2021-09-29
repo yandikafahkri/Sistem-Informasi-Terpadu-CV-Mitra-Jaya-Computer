@@ -55,8 +55,14 @@
                               <td>{{ $inv->nama}} </td>
                               <td>{{ $inv->ip}} </td>
                               <td>
-                                <a href="{{url('inventaris')}}/{{$inv->id}}/{{('clean')}}" class="btn btn-success btn-sm" style="color: white"">
+                                <a href="{{url('inventaris')}}/{{$inv->id}}/{{('clean')}}" class="btn btn-success btn-sm" style="color: white">
                                 <i class="fas fa-hand-sparkles" style="color: white"></i> Bersihkan</a>
+
+                                @if (auth()->user()->level=='administrator')
+                                <a href="{{url('inventaris')}}/{{$inv->id}}/{{('printclean')}}" class="btn btn-danger btn-sm" style="color: white" target="_blank">
+                                  <i class="fas fa-print" style="color: white"></i> Print</a>
+                                @endif
+  
                               </td>
                       </tr>
                       @endforeach  

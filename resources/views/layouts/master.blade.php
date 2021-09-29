@@ -105,7 +105,10 @@
           <a href="#" class="d-block">{{auth()->user()->name}}</a>
         </div>
         <div class="nav-item has-treeview text-center">
-          <a href="#" class="d-block"><b>({{auth()->user()->level}})</b></a>
+          <a href="#" class="d-block"><b>({{auth()->user()->jabatan}})</b></a>
+        </div>
+        <div class="nav-item has-treeview text-center">
+          <i class="text-muted">level akun : {{auth()->user()->level}}</i>
         </div>
 
 

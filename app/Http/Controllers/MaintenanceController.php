@@ -4,10 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Clean;
-use App\Incident;
 use App\Inventaris;
 use App\Clean_inventaris;
-use App\Incident_inventaris;
 
 class MaintenanceController extends Controller
 {

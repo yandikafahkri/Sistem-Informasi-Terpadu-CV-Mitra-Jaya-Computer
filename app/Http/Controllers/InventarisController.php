@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Clean;
-use App\Incident;
 use App\Inventaris,pivot;
 use App\Clean_inventaris;
 
@@ -64,16 +63,6 @@ class InventarisController extends Controller
                                         'pembersihan' => $pembersihan]);
     }
 
-    public function incident($id)
-    {
-        $incident = \App\Incident::find($id);
-        $inventaris = Inventaris::where('id', $id)->first();
-
-//perbaikan
-        $perbaikan = \App\Incident::all();        
-
-        return view('inventaris.incident',['incident' => $incident, 'inventaris' => $inventaris, 'perbaikan' => $perbaikan]);
-    }
 
     public function maint()
     {
@@ -98,14 +87,7 @@ class InventarisController extends Controller
         $inventaris->clean()->detach($idclean);
         return redirect()->back()->with('sukses', 'Data berhasil dihapus');
     }
-
-        public function deleteincident($idinventaris,$idincident)
-    {
-        $inventaris = \App\Inventaris::find($idinventaris);
-        $inventaris->incident()->detach($idincident);
-        return redirect()->back()->with('sukses', 'Data berhasil dihapus');
-    }
-    
+   
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
     public function printclean($id)
@@ -115,9 +97,8 @@ class InventarisController extends Controller
 //clean
         $rawat1 = \App\Clean::all();
 //incident
-        $rawat2 = \App\Incident::all();
 
-        return view('inventaris.printclean', ['inventaris' => $inventaris, 'rawat1' => $rawat1, 'rawat2' => $rawat2]);
+        return view('inventaris.printclean', ['inventaris' => $inventaris, 'rawat1' => $rawat1]);
     }
 
     public function printlist()
@@ -127,17 +108,6 @@ class InventarisController extends Controller
     	return view('inventaris.printlist',['data_inventaris' => $data_inventaris]);
     }
 
-    public function printincident($id)
-    {
-        $inventaris = \App\Inventaris::find($id);
-
-//clean
-        $rawat1 = \App\Clean::all();
-//incident
-        $rawat2 = \App\Incident::all();
-
-        return view('inventaris.printincident', ['inventaris' => $inventaris, 'rawat1' => $rawat1, 'rawat2' => $rawat2]);
-    }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -169,29 +139,6 @@ public function addrawat(Request $request ,$idinventaris)
     }
 
 
-    public function addganti(Request $request ,$idinventaris)
-    {
-       // dd($request->all());
-        $inventaris = \App\Inventaris::find($idinventaris);   
-
-//tambah foto      
-//    if($request->hasFile('ss_sebelum')){
-        $request->file('ss_sebelum')->move('images/', $request->file('ss_sebelum')->getClientOriginalName());
-        $request->file('ss_setelah')->move('images/', $request->file('ss_setelah')->getClientOriginalName());
-        $request->file('sebelum')->move('images/', $request->file('sebelum')->getClientOriginalName());
-        $request->file('setelah')->move('images/', $request->file('setelah')->getClientOriginalName());
-
-        $inventaris->incident()->attach
-        ($request->incident, 
-            ['ss_sebelum' => $request->file('ss_sebelum')->getClientOriginalName(), 
-            'ss_setelah' => $request->file('ss_setelah')->getClientOriginalName(), 
-            'sebelum' => $request->file('sebelum')->getClientOriginalName(),
-            'setelah' => $request->file('setelah')->getClientOriginalName(),
-            'waktu' => $request->waktu 
-            ]
-        );
-        return redirect('inventaris/'.$idinventaris.'/incident')->with('sukses', 'Data CCTV berhasil dimasukkan');
-    }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 

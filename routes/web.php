@@ -25,28 +25,14 @@ Route::get('/logout', 'AuthController@logout');
 Route::get('/hash', 'PasswordController@hash');
 
 
-Route::group(['middleware' => ['auth', 'ceklevel:administrator,teknisi']],function(){
+Route::group(['middleware' => ['auth', 'ceklevel:administrator,user,admin']],function(){
 
 	Route::get('/', 'DashboardController@index');
-
 	//Index List Inventaris
 	Route::get('/inventaris', 'InventarisController@index');
-
 	//Index List Maintenance
 	Route::get('/inventaris/maint', 'InventarisController@maint');
-
-
 	Route::get('/inventaris/{id}/clean', 'InventarisController@clean');
-	Route::get('/inventaris/{id}/{idclean}/deleteclean', 'InventarisController@deleteclean');
-
-	Route::get('/inventaris/{id}/incident', 'InventarisController@incident');
-	Route::get('/inventaris/{id}/{idincident}/deleteincident', 'InventarisController@deleteincident');
-
-
-	Route::post('/inventaris/{id}/addrawat', 'InventarisController@addrawat');
-	Route::post('/inventaris/{id}/addganti', 'InventarisController@addganti');
-
-	Route::get('/maintenance', 'MaintenanceController@index');
 
 	Route::get('/profile', 'ProfileController@index');
 
@@ -54,19 +40,19 @@ Route::group(['middleware' => ['auth', 'ceklevel:administrator,teknisi']],functi
 
 	Route::get('/author', 'AuthorController@index');
 
+	Route::get('/inventaris/printlist', 'InventarisController@printlist');
 
- });
+
+});
 
 
-//HAK AKSES ADMIN
-Route::group(['middleware' => ['auth', 'ceklevel:administrator']],function(){
+//HAK AKSES SPV
+Route::group(['middleware' => ['auth', 'ceklevel:administrator,admin']],function(){
 	Route::post('/inventaris/create', 'InventarisController@create');
 	Route::get('/inventaris/{id}/edit', 'InventarisController@edit');
 	Route::post('/inventaris/{id}/update', 'InventarisController@update');
 	Route::get('/inventaris/{id}/delete', 'InventarisController@delete');
 	Route::get('/inventaris/{id}/printclean', 'InventarisController@printclean');
-	Route::get('/inventaris/printlist', 'InventarisController@printlist');
-	Route::get('/inventaris/{id}/printincident', 'InventarisController@printincident');
 
 	Route::get('/karyawan', 'KaryawanController@index');
 	Route::post('/karyawan/create', 'KaryawanController@create');
@@ -74,12 +60,17 @@ Route::group(['middleware' => ['auth', 'ceklevel:administrator']],function(){
 	Route::post('/karyawan/{id}/update', 'KaryawanController@update');
 	Route::get('/karyawan/{id}/delete', 'KaryawanController@delete');
 
-});
 
-//HAK AKSES USER
-Route::group(['middleware' => ['auth', 'ceklevel:teknisi']],function(){
 
 });
+
+
+//HAK AKSES TEKNISI
+Route::group(['middleware' => ['auth', 'ceklevel:administrator,user']],function(){
+	Route::post('/inventaris/{id}/addrawat', 'InventarisController@addrawat');
+	Route::get('/inventaris/{id}/{idclean}/deleteclean', 'InventarisController@deleteclean');
+});
+
 
 
 

@@ -65,7 +65,7 @@
                             <th scope="col">Type</th>
 
                             @if (auth()->user()->level=='administrator')
-                            <th scope="col">Aksi</th>
+                            <th scope="col">Action</th>
                             @endif
                       </tr>
                   </thead>

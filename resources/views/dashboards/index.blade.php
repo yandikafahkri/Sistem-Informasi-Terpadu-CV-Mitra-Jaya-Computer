@@ -17,10 +17,23 @@
 	</div>
 	<!-- /.content-header -->
 
+
+
+
 <!-- Main content -->
 <section class="content">
 	<div class="container-fluid">
 		<div class="row">
+
+			<div class="col-lg-12">
+
+				@if(session('level'))
+				<div class="alert alert-danger" role="alert">
+				{{session('level')}}
+				</div>
+				@endif
+
+			</div>	
 
 			<div class="col-lg-4 col-6">
 				<!-- small box -->

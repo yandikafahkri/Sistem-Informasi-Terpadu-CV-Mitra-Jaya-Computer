@@ -140,21 +140,28 @@
 	<div class="row justify-content-center" >
 		<div class="col-md-12">
 			<!-- Button trigger modal -->
-			<button type="button" class="btn btn-success" data-toggle="modal" data-target="#ModalMaint">
-				<i class="fa fa-plus"></i> Masukan Data Maintenance
-			</button>
 
-			@foreach($inventaris->clean as $clean)
-			<a href="{{url('inventaris')}}/{{$inventaris->id}}/{{$clean->id}}/{{'deleteclean'}}"
-				class="btn btn-danger btn-md" onclick="return confirm('Data akan di hapus ?')">
-				<i class="fa fa-trash"></i> Hapus Data</a>
-			@endforeach
+			@if (auth()->user()->level=='user')
+				<button type="button" class="btn btn-success" data-toggle="modal" data-target="#ModalMaint">
+					<i class="fa fa-plus"></i> Masukan Data Maintenance
+				</button>
+
+				@foreach($inventaris->clean as $clean)
+				<a href="{{url('inventaris')}}/{{$inventaris->id}}/{{$clean->id}}/{{'deleteclean'}}"
+					class="btn btn-danger btn-md" onclick="return confirm('Data akan di hapus ?')">
+					<i class="fa fa-trash"></i> Hapus Data</a>
+				@endforeach
+			@endif
 
 
 			<a href="{{url('inventaris')}}/{{'maint'}}" class="btn btn-info btn-md">
 				<i class="fas fa-undo"> </i> Kembali
 			</a>
-			<a href="{{ url('inventaris') }}/{{$inventaris->id}}/{{('printclean')}}" target="_blank" class="btn btn-success float-right"><i class="fas fa-print"></i> Print</a>
+
+			@if (auth()->user()->level=='admin')
+			<a href="{{ url('inventaris') }}/{{$inventaris->id}}/{{('printclean')}}" target="_blank" class="btn btn-success float-right">
+			<i class="fas fa-print"></i> Print</a>
+			@endif
 		</div>
 	</div>
 </div>
